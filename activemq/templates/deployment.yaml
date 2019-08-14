@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: activemq
+  labels:
+    app: {{ template "activemq.fullname" . }}
+    chart: "{{ template "activemq.chart" . }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+  selector:
+    matchLabels:
+      app: {{ template "activemq.fullname" . }}
+      tier: activemq
+  template:
+    metadata:
+      labels:
+        app: {{ template "activemq.fullname" . }}
+        tier: activemq
+    spec:
+      containers:
+        - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          name: activemq
+          ports:
+            - containerPort: {{ .Values.service.webPort }}
+              name: webport
+            - containerPort: {{ .Values.service.jmsPort }}
+              name: jmsport
+          volumeMounts:
+            - name: activemq-config
+              mountPath: /opt/activemq/conf/jetty.xml
+              subPath: jetty.xml
+            - name: data
+              mountPath: /opt/activemq/data
+      imagePullSecrets:
+        - name: docker-notix
+      volumes:
+        - name: activemq-config
+          configMap:
+            name: activemq
+        - name: data
+        {{- if .Values.persistence.enabled }}
+          persistentVolumeClaim:
+            claimName: activemq
+        {{- else }}
+          emptyDir: {}
+        {{- end }}

@@ -1,0 +1,15 @@
+image:
+  repository: docker.powerflow.cloud/powerflow/activemq
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  webPort: 8161
+  jmsPort: 61616
+
+## Persist data to a persistent volume
+persistence:
+  enabled: true
+  storageClass: 'nfs-client'
+  accessMode: ReadWriteOnce
+  size: 100Mi

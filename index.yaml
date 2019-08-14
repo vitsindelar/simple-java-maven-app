@@ -1,9 +1,19 @@
 apiVersion: v1
 entries:
+  activemq:
+  - apiVersion: v1
+    appVersion: 0.1.0
+    created: "2019-08-14T15:09:39.06956021+02:00"
+    description: A Helm chart for Kubernetes
+    digest: dd5caf4d0a65cc89bfbcac2374842bf43b6a9dda803d3ab683646614f063257b
+    name: activemq
+    urls:
+    - activemq/activemq-0.1.0.tgz
+    version: 0.1.0
   app:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2019-08-14T14:57:34.489350806+02:00"
+    created: "2019-08-14T15:09:39.070065075+02:00"
     description: A Helm chart for Kubernetes
     digest: 84611f5413625a31d40f77a88f2ede48618a78ed4a0de4a48516ce90ec1c0cd6
     name: app
@@ -13,11 +23,11 @@ entries:
   mychart:
   - apiVersion: v1
     appVersion: "1.0"
-    created: "2019-08-14T14:57:34.489489937+02:00"
+    created: "2019-08-14T15:09:39.070395439+02:00"
     description: A Helm chart for Kubernetes
     digest: 3b1cbacd7219559a75dfbe3fe34a6abc083225c737b6296599ba6f5054b21999
     name: mychart
     urls:
     - mychart/mychart-0.1.0.tgz
     version: 0.1.0
-generated: "2019-08-14T14:57:34.489012352+02:00"
+generated: "2019-08-14T15:09:39.068729418+02:00"
